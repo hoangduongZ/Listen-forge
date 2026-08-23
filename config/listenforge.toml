@@ -1,0 +1,33 @@
+# ListenForge configuration.
+# The lesson Markdown says WHAT to learn; this file says HOW to render the audio.
+
+[paths]
+input  = "./input"
+output = "./output"
+
+[pauses]
+after_context = 2.0   # after the Vietnamese context
+after_english = 2.5   # between the English passes
+between_lines = 0.6   # between dialogue lines
+
+[speed]
+normal = "+0%"
+slow   = "-30%"       # applied natively by the voice, not by time-stretching
+
+[repeat]
+normal_times = 2      # normal-speed passes before the slow pass
+
+[voices]
+vietnamese    = "vi-VN-NamMinhNeural"
+english       = ["en-US-BrianNeural", "en-US-AvaNeural"]
+multi_speaker = true  # rotate voices across speakers, in first-appearance order
+
+[tts]
+provider    = "edge"
+concurrency = 4
+cache       = true
+
+[audio]
+bitrate     = "48k"
+sample_rate = 24000
+ffmpeg      = ""      # empty = look up on PATH

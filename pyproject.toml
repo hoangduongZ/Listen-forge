@@ -1,0 +1,34 @@
+[project]
+name = "listenforge"
+version = "0.1.0"
+description = "Convert structured English listening lesson Markdown into playable MP3 files"
+requires-python = ">=3.11"
+dependencies = [
+    "typer>=0.15",
+    "edge-tts>=7.0",
+    "pyyaml>=6.0",
+    "mutagen>=1.47",
+    "platformdirs>=4.0",
+]
+
+[project.scripts]
+listenforge = "listenforge.cli:app"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.24",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/listenforge"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+asyncio_mode = "auto"
+filterwarnings = ["error::DeprecationWarning:listenforge.*"]
